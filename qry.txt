@@ -1,151 +1,104 @@
-Broker Table
-broker_id (Primary_key)	Company_name	MC_Number	DOT_Number	Credit_Score	Load_Number
-
-
-Truck Table
-truck_id (Primary_key)	make	model	VIN (Unique)	License_Plate	Registration	Physical_Insurance	Owner	Expenses
-
-
-Carrier Table
-Carrier_id (Primary_key)	Carrier_Name	Insurance_Policy_number	DOT_number	MC_number	Number_of_Trucks
-
-Insurance Table
-Insurance_id (Primary_key)	Name	Phone_Number	Expiry_Date	Insurance_Agent	Agent_Phone_Number
-
-Dispatcher Table
-Dispater_id (Primary_key)	Name	Is_Admin	Phone_Number	Carrier_id	Payment_Type	Bank_Info
-
-Driver Table
-Driver_id (Primary_key)	Name	Phone_Number	Carrier_id	Payment_Type	Bank_Info	Medical_Card
-
-
-Broker_Dispatcher Table
-Broker_Dispatcher (Primary_key)	Broker_id (Foreign_key)	Dispatcher_id (Foreign_key)
-
-Broker_Driver Table
-Broker_Driver (Primary_key)	Broker_id (Foreign_key)	Driver_id (Foreign_key)
-
-Broker_Carrier Table
-Broker_Carrier (Primary_key)	Broker_id (Foreign_key)	Carrier_id (Foreign_key)
-
-Dispatcher_Driver Table
-Dispatcher_Driver (Primary_key)	Dispatcher_id (Foreign_key)	Driver_id (Foreign_key)
-
-Broker - Dispatcher : many - many
-Broker - Driver : many - many
-Broker - Carrier : many - many
-
-Dispatcher - Driver : many - many
-
-Driver - Truck : one - one
-
-Insurance - Driver : one - many
-Insurance - Truck : one - many
-Insurance - Carrier : one - many
-
-
 -- Broker Table
 CREATE TABLE Brokers (
-    broker_id INT PRIMARY KEY AUTO_INCREMENT,
-    company_name VARCHAR(255) NOT NULL,
-    mc_number VARCHAR(50) NOT NULL,
-    dot_number VARCHAR(50) NOT NULL,
-    credit_score DECIMAL(3,1),
-    load_number INT
+    broker_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    company_name TEXT NOT NULL,
+    mc_number TEXT NOT NULL,
+    dot_number TEXT NOT NULL,
+    credit_score NUMERIC(3,1),
+    load_number INTEGER
 );
 
 -- Truck Table
 CREATE TABLE Trucks (
-    truck_id INT PRIMARY KEY AUTOINCREMENT,
-    make VARCHAR(100) NOT NULL,
-    model VARCHAR(100) NOT NULL,
-    vin VARCHAR(50) UNIQUE NOT NULL,
-    license_plate VARCHAR(50) NOT NULL,
-    registration VARCHAR(100),
-    physical_insurance VARCHAR(255),
-    owner VARCHAR(255),
-    expenses DECIMAL(10,2),
-    driver_id INT UNIQUE,  -- Adding driver_id as a foreign key to establish the one-to-one relationship
+    truck_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    make TEXT NOT NULL,
+    model TEXT NOT NULL,
+    vin TEXT UNIQUE NOT NULL,
+    license_plate TEXT NOT NULL,
+    registration TEXT,
+    physical_insurance TEXT,
+    owner TEXT,
+    expenses NUMERIC(10,2),
+    driver_id INTEGER UNIQUE,  -- Foreign key for one-to-one relationship
     FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
 );
 
 -- Carrier Table
 CREATE TABLE Carriers (
-    carrier_id INT PRIMARY KEY AUTOINCREMENT,
-    carrier_name VARCHAR(255) NOT NULL,
-    insurance_policy_number VARCHAR(50),
-    dot_number VARCHAR(50) NOT NULL,
-    mc_number VARCHAR(50) NOT NULL,
-    number_of_trucks INT
+    carrier_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    carrier_name TEXT NOT NULL,
+    insurance_policy_number TEXT,
+    dot_number TEXT NOT NULL,
+    mc_number TEXT NOT NULL,
+    number_of_trucks INTEGER
 );
 
 -- Insurance Table
 CREATE TABLE Insurance (
-    insurance_id INT PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(255) NOT NULL,
-    is_Admin VARCHAR(2),
-    phone_number VARCHAR(20),
+    insurance_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone_number TEXT,
     expiry_date DATE,
-    insurance_agent VARCHAR(255),
-    agent_phone_number VARCHAR(20)
+    insurance_agent TEXT,
+    agent_phone_number TEXT
 );
 
 -- Dispatcher Table
 CREATE TABLE Dispatchers (
-    dispatcher_id INT PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(20),
-    carrier_id INT,
-    payment_type VARCHAR(50),
-    bank_info VARCHAR(255),
+    dispatcher_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone_number TEXT,
+    carrier_id INTEGER,
+    payment_type TEXT,
+    bank_info TEXT,
     FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
 );
 
 -- Driver Table
 CREATE TABLE Drivers (
-    driver_id INT PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(20),
-    carrier_id INT,
-    payment_type VARCHAR(50),
-    bank_info VARCHAR(255),
-    medical_card VARCHAR(50),
+    driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone_number TEXT,
+    carrier_id INTEGER,
+    payment_type TEXT,
+    bank_info TEXT,
+    medical_card TEXT,
     FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
 );
 
 -- Many-to-Many Relationship Tables
 -- Broker_Dispatcher Table
 CREATE TABLE Broker_Dispatcher (
-    broker_dispatcher_id INT PRIMARY KEY AUTOINCREMENT,
-    broker_id INT,
-    dispatcher_id INT,
+    broker_dispatcher_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    broker_id INTEGER,
+    dispatcher_id INTEGER,
     FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
     FOREIGN KEY (dispatcher_id) REFERENCES Dispatchers(dispatcher_id)
 );
 
 -- Broker_Driver Table
 CREATE TABLE Broker_Driver (
-    broker_driver_id INT PRIMARY KEY AUTOINCREMENT,
-    broker_id INT,
-    driver_id INT,
+    broker_driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    broker_id INTEGER,
+    driver_id INTEGER,
     FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
     FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
 );
 
 -- Broker_Carrier Table
 CREATE TABLE Broker_Carrier (
-    broker_carrier_id INT PRIMARY KEY AUTOINCREMENT,
-    broker_id INT,
-    carrier_id INT,
+    broker_carrier_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    broker_id INTEGER,
+    carrier_id INTEGER,
     FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
     FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
 );
 
 -- Dispatcher_Driver Table
 CREATE TABLE Dispatcher_Driver (
-    dispatcher_driver_id INT PRIMARY KEY AUTOINCREMENT,
-    dispatcher_id INT,
-    driver_id INT,
+    dispatcher_driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dispatcher_id INTEGER,
+    driver_id INTEGER,
     FOREIGN KEY (dispatcher_id) REFERENCES Dispatchers(dispatcher_id),
     FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
 );
