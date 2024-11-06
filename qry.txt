@@ -1,3 +1,10 @@
+DROP TABLE Brokers;
+DROP TABLE Trucks;
+DROP TABLE Carriers;
+DROP TABLE Dispatchers;
+DROP TABLE Drivers;
+DROP TABLE Insurance;
+
 -- Broker Table
 CREATE TABLE Brokers (
     broker_id INTEGER PRIMARY KEY AUTOINCREMENT,
