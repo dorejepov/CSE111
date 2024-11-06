@@ -19,7 +19,7 @@ CREATE TABLE Trucks (
     physical_insurance TEXT,
     owner TEXT,
     expenses NUMERIC(10,2),
-    driver_id INTEGER UNIQUE,  -- Foreign key for one-to-one relationship
+    driver_id INTEGER UNIQUE,  -- One-to-one relationship with Driver
     FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
 );
 
@@ -48,7 +48,7 @@ CREATE TABLE Dispatchers (
     dispatcher_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     phone_number TEXT,
-    carrier_id INTEGER,
+    carrier_id INTEGER,  -- Link to Carrier if needed
     payment_type TEXT,
     bank_info TEXT,
     FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
@@ -59,46 +59,9 @@ CREATE TABLE Drivers (
     driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     phone_number TEXT,
-    carrier_id INTEGER,
+    carrier_id INTEGER,  -- Link to Carrier if needed
     payment_type TEXT,
     bank_info TEXT,
     medical_card TEXT,
     FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
-);
-
--- Many-to-Many Relationship Tables
--- Broker_Dispatcher Table
-CREATE TABLE Broker_Dispatcher (
-    broker_dispatcher_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    broker_id INTEGER,
-    dispatcher_id INTEGER,
-    FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
-    FOREIGN KEY (dispatcher_id) REFERENCES Dispatchers(dispatcher_id)
-);
-
--- Broker_Driver Table
-CREATE TABLE Broker_Driver (
-    broker_driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    broker_id INTEGER,
-    driver_id INTEGER,
-    FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
-    FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
-);
-
--- Broker_Carrier Table
-CREATE TABLE Broker_Carrier (
-    broker_carrier_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    broker_id INTEGER,
-    carrier_id INTEGER,
-    FOREIGN KEY (broker_id) REFERENCES Brokers(broker_id),
-    FOREIGN KEY (carrier_id) REFERENCES Carriers(carrier_id)
-);
-
--- Dispatcher_Driver Table
-CREATE TABLE Dispatcher_Driver (
-    dispatcher_driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    dispatcher_id INTEGER,
-    driver_id INTEGER,
-    FOREIGN KEY (dispatcher_id) REFERENCES Dispatchers(dispatcher_id),
-    FOREIGN KEY (driver_id) REFERENCES Drivers(driver_id)
 );
