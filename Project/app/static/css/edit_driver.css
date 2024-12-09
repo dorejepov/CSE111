@@ -1,0 +1,113 @@
+
+/* Edit Driver Page - Overboard Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #6a1b9a, #ab47bc);
+    color: #fff;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #f3e5f5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1.5rem;
+}
+
+header nav ul li a {
+    color: #f3e5f5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffeb3b;
+}
+
+.edit-driver-section {
+    padding: 2rem;
+    margin: 1rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.edit-driver-section h2 {
+    text-align: center;
+    color: #ffeb3b;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.edit-driver-form {
+    margin-top: 1rem;
+}
+
+.edit-driver-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.edit-driver-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffeb3b;
+}
+
+.edit-driver-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-driver-input:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.edit-driver-submit-button {
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background: #8e24aa;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button.edit-driver-submit-button:hover {
+    background: #6a1b9a;
+}

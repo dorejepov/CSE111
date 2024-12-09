@@ -1,0 +1,125 @@
+
+/* View Trucks Page - Overboard Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #283593, #3949ab);
+    color: #fff;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #e8eaf6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: #e8eaf6;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffeb3b;
+}
+
+.view-trucks-section {
+    padding: 2rem;
+    margin: 1rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 90%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    color: #ffeb3b;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.view-trucks-add-button-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.view-trucks-add-button {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background: #37895d;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.view-trucks-add-button:hover {
+    background: #283593;
+}
+
+table {
+    width: 100%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    color: #e8eaf6;
+}
+
+table th {
+    background: #3949ab;
+    color: #ffeb3b;
+    text-transform: uppercase;
+}
+
+table td {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    background: #3949ab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #283593;
+}

@@ -1,0 +1,136 @@
+
+/* View Drivers Page - Overboard Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #6a1b9a, #ab47bc);
+    color: #fff;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #f3e5f5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1.5rem;
+}
+
+header nav ul li a {
+    color: #f3e5f5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffeb3b;
+}
+
+.view-drivers-section {
+    padding: 2rem;
+    margin: 1rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 90%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.view-drivers-section h2 {
+    text-align: center;
+    color: #ffeb3b;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.view-drivers-applications-button {
+    display: block;
+    width: 200px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #8e24aa;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.view-drivers-applications-button:hover {
+    background: #6a1b9a;
+}
+
+table {
+    width: 100%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    color: #f3e5f5;
+}
+
+table th {
+    background: #8e24aa;
+    color: #ffeb3b;
+    text-transform: uppercase;
+}
+
+table td {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.view-drivers-edit-button, .view-drivers-delete-button {
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.view-drivers-edit-button {
+    background: #8e24aa;
+}
+
+.view-drivers-edit-button:hover {
+    background: #6a1b9a;
+}
+
+.view-drivers-delete-button {
+    background: #d32f2f;
+}
+
+.view-drivers-delete-button:hover {
+    background: #b71c1c;
+}
