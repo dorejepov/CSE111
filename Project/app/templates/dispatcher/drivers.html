@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Drivers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="view-drivers-header">
+            <h1 class="view-drivers-title">Drivers</h1>
+            <nav class="view-drivers-nav">
+                <ul class="view-drivers-nav-list">
+                    <li><a href="{{ url_for('main.dispatcher_dashboard') }}" class="view-drivers-nav-link">Back to Dashboard</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="view-drivers-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Drivers Table -->
+    <main>
+        <section class="view-drivers-section">
+            <h2 class="view-drivers-heading">List of Drivers</h2>
+
+            <!-- View Applications Button -->
+            <a href="{{ url_for('main.view_applications') }}" class="view-drivers-applications-button">View Applications</a>
+
+            <!-- Drivers Table -->
+            <table class="view-drivers-table">
+                <thead class="view-drivers-table-head">
+                    <tr>
+                        <th>Driver ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Payment Type</th>
+                        <th>Bank Info</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="view-drivers-table-body">
+                    {% for driver in drivers %}
+                        <tr>
+                            <td>{{ driver['driver_id'] }}</td>
+                            <td>{{ driver['name'] }}</td>
+                            <td>{{ driver['phone_number'] }}</td>
+                            <td>{{ driver['payment_type'] }}</td>
+                            <td>{{ driver['bank_info'] }}</td>
+                            <td>
+                                <a href="{{ url_for('main.edit_driver', driver_id=driver['driver_id']) }}" class="view-drivers-edit-button">Edit</a>
+                                <form method="POST" action="{{ url_for('main.delete_driver', driver_id=driver['driver_id']) }}" class="view-drivers-delete-form">
+                                    <button type="submit" class="view-drivers-delete-button">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript for functionality if needed
+    </script>
+</body>
+</html>

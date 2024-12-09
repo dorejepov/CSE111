@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="view-applications-header">
+            <h1 class="view-applications-title">Driver Applications</h1>
+            <nav class="view-applications-nav">
+                <ul class="view-applications-nav-list">
+                    <li><a href="{{ url_for('main.view_drivers') }}" class="view-applications-nav-link">Back to Drivers</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="view-applications-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Applications Table -->
+    <main>
+        <section class="view-applications-section">
+            <h2 class="view-applications-heading">Job Applications</h2>
+
+            <table class="view-applications-table">
+                <thead>
+                    <tr>
+                        <th>Application ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Experience (yrs)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications %}
+                        <tr>
+                            <td>{{ application['application_id'] }}</td>
+                            <td>{{ application['name'] }}</td>
+                            <td>{{ application['email'] }}</td>
+                            <td>{{ application['phone'] }}</td>
+                            <td>{{ application['address'] }}</td>
+                            <td>{{ application['years_of_exp'] }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('main.approve_application', application_id=application['application_id']) }}" class="view-applications-form">
+                                    <button type="submit" class="view-applications-approve-button">Approve</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('main.reject_application', application_id=application['application_id']) }}" class="view-applications-form">
+                                    <button type="submit" class="view-applications-reject-button">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript for functionality if needed
+    </script>
+</body>
+</html>

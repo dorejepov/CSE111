@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Driver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="edit-driver-header">
+            <h1 class="edit-driver-title">Edit Driver Information</h1>
+            <nav class="edit-driver-nav">
+                <ul class="edit-driver-nav-list">
+                    <li><a href="{{ url_for('main.view_drivers') }}" class="edit-driver-nav-link">Back to Drivers</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="edit-driver-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Edit Driver Form -->
+    <main>
+        <section class="edit-driver-section">
+            <h2 class="edit-driver-heading">Driver ID: {{ driver['driver_id'] }} - Edit Information</h2>
+            <form method="POST" action="{{ url_for('main.edit_driver', driver_id=driver['driver_id']) }}" class="edit-driver-form">
+                <div class="edit-driver-form-group">
+                    <label for="name" class="edit-driver-label">Name:</label>
+                    <input type="text" id="name" name="name" value="{{ driver['name'] }}" class="edit-driver-input" required>
+                </div>
+
+                <div class="edit-driver-form-group">
+                    <label for="phone" class="edit-driver-label">Phone:</label>
+                    <input type="text" id="phone" name="phone" value="{{ driver['phone_number'] }}" class="edit-driver-input" required>
+                </div>
+
+                <div class="edit-driver-form-group">
+                    <label for="payment_type" class="edit-driver-label">Payment Type:</label>
+                    <input type="text" id="payment_type" name="payment_type" value="{{ driver['payment_type'] }}" class="edit-driver-input" required>
+                </div>
+
+                <div class="edit-driver-form-group">
+                    <label for="bank_info" class="edit-driver-label">Bank Info:</label>
+                    <input type="text" id="bank_info" name="bank_info" value="{{ driver['bank_info'] }}" class="edit-driver-input" required>
+                </div>
+
+                <button type="submit" class="edit-driver-submit-button">Save Changes</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript if needed
+    </script>
+</body>
+</html>

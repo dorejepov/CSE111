@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="view-requests-header">
+            <h1 class="view-requests-title">Load Requests, Approved Loads & Available Trucks</h1>
+            <nav class="view-requests-nav">
+                <ul class="view-requests-nav-list">
+                    <li><a href="{{ url_for('main.dispatcher_dashboard') }}" class="view-requests-nav-link">Back to Dashboard</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="view-requests-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Pending Requests -->
+    <main>
+        <section class="view-requests-section">
+            <h2 class="view-requests-heading">Pending Load Requests</h2>
+
+            <table class="view-requests-table">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Broker</th>
+                        <th>Phone Number</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Load Details</th>
+                        <th>Truck ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                        <tr>
+                            <td>{{ request['request_id'] }}</td>
+                            <td>{{ request['broker_company_name'] }}</td>
+                            <td>{{ request['phone_number'] }}</td>
+                            <td>{{ request['origin'] }}</td>
+                            <td>{{ request['destination'] }}</td>
+                            <td>{{ request['load_details'] }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('main.assign_request') }}" class="view-requests-form">
+                                    <input type="hidden" name="request_id" value="{{ request['request_id'] }}">
+                                    <input type="text" name="truck_id" placeholder="Enter Truck ID" class="view-requests-input" required>
+                                    <button type="submit" class="view-requests-assign-button">Assign</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{ url_for('main.deny_request', request_id=request['request_id']) }}" class="view-requests-form">
+                                    <button type="submit" class="view-requests-deny-button">Deny</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Available Trucks -->
+        <section class="view-available-trucks-section">
+            <h2 class="view-available-trucks-heading">Available Trucks</h2>
+
+            <table class="view-available-trucks-table">
+                <thead>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Driver</th>
+                        <th>Phone Number</th>
+                        <th>Current Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for truck in available_trucks %}
+                        <tr>
+                            <td>{{ truck['truck_id'] }}</td>
+                            <td>{{ truck['make'] }}</td>
+                            <td>{{ truck['model'] }}</td>
+                            <td>{{ truck['driver_name'] or "Unassigned" }}</td>
+                            <td>{{ truck['driver_phone_number'] }}</td>
+                            <td>{{ truck['destination_state'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Approved Loads -->
+        <section class="view-approved-loads-section">
+            <h2 class="view-approved-loads-heading">Approved Loads</h2>
+
+            <table class="view-approved-loads-table">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Broker Name</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Assigned Truck</th>
+                        <th>Driver Name</th>
+                        <th>Driver Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for load in approved_loads %}
+                        <tr>
+                            <td>{{ load['request_id'] }}</td>
+                            <td>{{ load['broker_company_name'] }}</td>
+                            <td>{{ load['origin'] }}</td>
+                            <td>{{ load['destination'] }}</td>
+                            <td>{{ load['assigned_truck'] }}</td>
+                            <td>{{ load['driver_name'] or "Unassigned" }}</td>
+                            <td>{{ load['driver_phone'] or "N/A" }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('main.complete_load', request_id=load['request_id']) }}" class="view-approved-loads-form">
+                                    <button type="submit" class="view-approved-loads-complete-button">Complete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

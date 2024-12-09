@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="dispatcher-account-header">
+            <h1 class="dispatcher-account-title">Dispatcher Account</h1>
+            <nav class="dispatcher-account-nav">
+                <ul class="dispatcher-account-nav-list">
+                    <li><a href="{{ url_for('main.dispatcher_dashboard') }}" class="dispatcher-account-nav-link">Back</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="dispatcher-account-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dispatcher Information Section -->
+    <main>
+        <section class="dispatcher-account-info">
+            <h2 class="dispatcher-account-welcome">Welcome, {{ dispatcher['name'] }}</h2>
+            <div class="dispatcher-account-details">
+                <ul class="dispatcher-account-details-list">
+                    <li><strong>ID:</strong> {{ dispatcher['dispatcher_id'] }}</li>
+                    <li><strong>Phone:</strong> {{ dispatcher['phone_number'] }}</li>
+                    <li><strong>Payment Type:</strong> {{ dispatcher['payment_type'] }}</li>
+                    <li><strong>Bank Information:</strong> {{ dispatcher['bank_info'] }}</li>
+                </ul>
+            </div>
+            <button id="edit-dispatcher-button" class="dispatcher-account-edit-button">Edit Information</button>
+        </section>
+
+        <!-- Edit Information Modal -->
+        <div id="edit-dispatcher-modal" class="dispatcher-account-modal">
+            <div class="dispatcher-account-modal-content">
+                <span class="dispatcher-account-modal-close">&times;</span>
+                <h2 class="dispatcher-account-modal-title">Edit Your Information</h2>
+                <form method="POST" action="{{ url_for('main.edit_dispatcher_info') }}">
+                    <label for="dispatcher-name">Name:</label>
+                    <input type="text" id="dispatcher-name" name="name" value="{{ dispatcher['name'] }}" required>
+
+                    <label for="dispatcher-phone-number">Phone:</label>
+                    <input type="text" id="dispatcher-phone-number" name="phone_number" value="{{ dispatcher['phone_number'] }}" required>
+
+                    <label for="dispatcher-payment-type">Payment Type:</label>
+                    <input type="text" id="dispatcher-payment-type" name="payment_type" value="{{ dispatcher['payment_type'] }}" required>
+
+                    <label for="dispatcher-bank-info">Bank Information:</label>
+                    <input type="text" id="dispatcher-bank-info" name="bank_info" value="{{ dispatcher['bank_info'] }}" required>
+
+                    <button type="submit" class="dispatcher-account-save-button">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        const editButton = document.getElementById('edit-dispatcher-button');
+        const editModal = document.getElementById('edit-dispatcher-modal');
+        const closeEditModal = document.querySelector('.dispatcher-account-modal-close');
+
+        editButton.addEventListener('click', () => {
+            editModal.style.display = 'block';
+        });
+
+        closeEditModal.addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

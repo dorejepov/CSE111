@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Truck</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="edit-truck-header">
+            <h1 class="edit-truck-title">Edit Truck Information</h1>
+            <nav class="edit-truck-nav">
+                <ul class="edit-truck-nav-list">
+                    <li><a href="{{ url_for('main.view_trucks') }}" class="edit-truck-nav-link">Back to Trucks</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="edit-truck-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Edit Truck Information Form -->
+    <main>
+        <section class="edit-truck-section">
+            <h2 class="edit-truck-heading">Truck ID: {{ trucks['truck_id'] }} - Edit Information</h2>
+
+            <form method="POST" action="{{ url_for('main.edit_truck', truck_id=trucks['truck_id']) }}" class="edit-truck-form">
+                <div class="edit-truck-form-row">
+                    <label for="make" class="edit-truck-label">Make:</label>
+                    <input type="text" id="make" name="make" class="edit-truck-input" value="{{ trucks['make'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="model" class="edit-truck-label">Model:</label>
+                    <input type="text" id="model" name="model" class="edit-truck-input" value="{{ trucks['model'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="vin" class="edit-truck-label">VIN:</label>
+                    <input type="text" id="vin" name="vin" class="edit-truck-input" value="{{ trucks['vin'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="license_plate" class="edit-truck-label">License Plate:</label>
+                    <input type="text" id="license_plate" name="license_plate" class="edit-truck-input" value="{{ trucks['license_plate'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="registration" class="edit-truck-label">Registration:</label>
+                    <input type="text" id="registration" name="registration" class="edit-truck-input" value="{{ trucks['registration'] }}">
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="physical_insurance" class="edit-truck-label">Physical Insurance:</label>
+                    <select id="physical_insurance" name="physical_insurance" class="edit-truck-select">
+                        {% for insurance in insurances %}
+                            <option value="{{ insurance['insurance_id'] }}" {% if trucks['physical_insurance'] == insurance['insurance_id'] %}selected{% endif %}>
+                                {{ insurance['name'] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="owner" class="edit-truck-label">Owner:</label>
+                    <input type="text" id="owner" name="owner" class="edit-truck-input" value="{{ trucks['owner'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="expenses" class="edit-truck-label">Expenses:</label>
+                    <input type="number" id="expenses" name="expenses" class="edit-truck-input" value="{{ trucks['expenses'] }}" step="0.01" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="driver_id" class="edit-truck-label">Driver:</label>
+                    <select id="driver_id" name="driver_id" class="edit-truck-select">
+                        {% for driver in drivers %}
+                            <option value="{{ driver['driver_id'] }}" 
+                                {% if trucks['driver_id'] == driver['driver_id'] %} selected {% endif %}>
+                                {{ driver['name'] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <small style="color: red;">Selecting a driver already assigned to a truck will remove them from their current truck.</small>
+                </div>
+                
+
+                <div class="edit-truck-form-row">
+                    <label for="policy_end_date" class="edit-truck-label">Policy End Date:</label>
+                    <input type="date" id="policy_end_date" name="policy_end_date" class="edit-truck-input" value="{{ trucks['policy_end_date'] }}" required>
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="destination_state" class="edit-truck-label">Destination State:</label>
+                    <input type="text" id="destination_state" name="destination_state" class="edit-truck-input" value="{{ trucks['destination_state'] }}">
+                </div>
+
+                <div class="edit-truck-form-row">
+                    <label for="following_dest_state" class="edit-truck-label">Following Destination State:</label>
+                    <input type="text" id="following_dest_state" name="following_dest_state" class="edit-truck-input" value="{{ trucks['following_dest_state'] }}">
+                </div>
+
+                <button type="submit" class="edit-truck-submit-button">Save Changes</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript if needed for modal or any interaction
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="driver-account-header-container">
+            <h1 class="driver-account-title">Driver Account</h1>
+            <nav>
+                <ul class="driver-account-nav-links">
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="driver-account-logout-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Driver Information Section -->
+    <main>
+        <section class="driver-account-info-section" style="text-align: center; margin-top: 50px;">
+            <h2 class="driver-account-welcome-message">Welcome, {{ driver['name'] }}</h2>
+            <div class="driver-account-info-container" style="display: inline-block; text-align: left;">
+                <ul class="driver-account-info-list" style="list-style-type: none; padding: 0;">
+                    <li><strong>Phone:</strong> {{ driver['phone_number'] }}</li>
+                    <li><strong>Payment Type:</strong> {{ driver['payment_type'] }}</li>
+                    <li><strong>Bank Information:</strong> {{ driver['bank_info'] }}</li>
+                    <li><strong>Medical Card:</strong> {{ driver['medical_card'] }}</li>
+                    <li><strong>Insurance ID:</strong> {{ driver['insurance_id'] }}</li>
+                    <li><strong>Policy End Date:</strong> {{ driver['policy_end_date'] }}</li>
+                </ul>
+            </div>
+            <br>
+            <button id="edit-button" class="driver-account-edit-button">Edit Information</button>
+        </section>
+
+        <!-- Edit Information Modal -->
+        <div id="edit-modal" class="driver-account-modal">
+            <div class="driver-account-modal-content">
+                <span class="driver-account-modal-close">&times;</span>
+                <h2 class="driver-account-modal-title">Edit Your Information</h2>
+                <form method="POST" action="{{ url_for('main.edit_driver_info') }}" class="driver-account-edit-form">
+                    <label for="phone_number">Phone:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ driver['phone_number'] }}" required>
+
+                    <label for="payment_type">Payment Type:</label>
+                    <input type="text" id="payment_type" name="payment_type" value="{{ driver['payment_type'] }}" required>
+
+                    <label for="bank_info">Bank Information:</label>
+                    <select id="bank_info" name="bank_info" required>
+                        <option value="Bank of America" {% if driver['bank_info'] == 'Bank of America' %}selected{% endif %}>Bank of America</option>
+                        <option value="Wells Fargo" {% if driver['bank_info'] == 'Wells Fargo' %}selected{% endif %}>Wells Fargo</option>
+                        <option value="Chase Bank" {% if driver['bank_info'] == 'Chase Bank' %}selected{% endif %}>Chase Bank</option>
+                    </select>
+
+                    <label for="medical_card">Medical Card:</label>
+                    <input type="text" id="medical_card" name="medical_card" value="{{ driver['medical_card'] }}" required>
+
+                    <label for="insurance_id">Insurance:</label>
+                    <select id="insurance_id" name="insurance_id" required>
+                        {% for insurance in insurances %}
+                            <option value="{{ insurance['insurance_id'] }}" {% if driver['insurance_id'] == insurance['insurance_id'] %}selected{% endif %}>
+                                {{ insurance['name'] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="policy_end_date">Policy End Date:</label>
+                    <input type="date" id="policy_end_date" name="policy_end_date" value="{{ driver['policy_end_date'] }}" required>
+
+                    <button type="submit" class="driver-account-save-button">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        const editButton = document.getElementById('edit-button');
+        const editModal = document.getElementById('edit-modal');
+        const closeEditModal = document.querySelector('.driver-account-modal-close');
+
+        editButton.addEventListener('click', () => {
+            editModal.style.display = 'block';
+        });
+
+        closeEditModal.addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

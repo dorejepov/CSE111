@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Trucks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="view-trucks-header">
+            <h1 class="view-trucks-title">Trucks</h1>
+            <nav class="view-trucks-nav">
+                <ul class="view-trucks-nav-list">
+                    <li><a href="{{ url_for('main.dispatcher_dashboard') }}" class="view-trucks-nav-link">Back to Dashboard</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="view-trucks-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Trucks Table -->
+    <main>
+        <section class="view-trucks-section">
+            <h2 class="view-trucks-heading">List of Trucks</h2>
+
+            <!-- Add New Truck Button -->
+            <div class="view-trucks-add-button-container">
+                <a href="{{ url_for('main.add_truck') }}" class="view-trucks-add-button">Add New Truck</a>
+            </div>
+
+            <!-- Trucks Table -->
+            <table class="view-trucks-table">
+                <thead>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>VIN</th>
+                        <th>License Plate</th>
+                        <th>Registration</th>
+                        <th>Policy End Date</th>
+                        <th>Driver</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for truck in trucks %}
+                        <tr>
+                            <td>{{ truck['truck_id'] }}</td>
+                            <td>{{ truck['make'] }}</td>
+                            <td>{{ truck['model'] }}</td>
+                            <td>{{ truck['vin'] }}</td>
+                            <td>{{ truck['license_plate'] }}</td>
+                            <td>{{ truck['registration'] }}</td>
+                            <td>{{ truck['policy_end_date'] }}</td>
+                            <td>{{ truck['drivers_name'] }}</td>
+                            <td>
+                                <form method="GET" action="{{ url_for('main.edit_truck', truck_id=truck['truck_id']) }}" class="view-trucks-form">
+                                    <button type="submit" class="view-trucks-edit-button">Edit</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('main.delete_truck', truck_id=truck['truck_id']) }}" class="view-trucks-form">
+                                    <button type="submit" class="view-trucks-delete-button">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript for any needed functionality can go here
+    </script>
+</body>
+</html>

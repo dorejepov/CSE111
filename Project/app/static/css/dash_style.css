@@ -1,0 +1,1165 @@
+/* Dispatcher Dashboard Page Styling */
+
+/* Header */
+.dispatcher-dashboard-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dispatcher-dashboard-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.dispatcher-dashboard-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.dispatcher-dashboard-nav-list li {
+    margin-left: 15px;
+}
+
+.dispatcher-dashboard-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.dispatcher-dashboard-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.dispatcher-dashboard-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.dispatcher-dashboard-welcome {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Action Buttons Section */
+.dispatcher-dashboard-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dispatcher-dashboard-button {
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.dispatcher-dashboard-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Dispatcher Account Page Styling */
+
+/* Header */
+.dispatcher-account-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dispatcher-account-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.dispatcher-account-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.dispatcher-account-nav-list li {
+    margin-left: 15px;
+}
+
+.dispatcher-account-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.dispatcher-account-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.dispatcher-account-info {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.dispatcher-account-welcome {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.dispatcher-account-details {
+    display: inline-block;
+    text-align: left;
+}
+
+.dispatcher-account-details-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.dispatcher-account-edit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dispatcher-account-edit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Modal */
+.dispatcher-account-modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.dispatcher-account-modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dispatcher-account-modal-close {
+    color: black;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dispatcher-account-modal-close:hover,
+.dispatcher-account-modal-close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form */
+.dispatcher-account-save-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.dispatcher-account-save-button:hover {
+    background-color: #0056b3;
+}
+
+/* View Trucks Page Styling */
+
+/* Header */
+.view-trucks-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.view-trucks-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.view-trucks-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.view-trucks-nav-list li {
+    margin-left: 15px;
+}
+
+.view-trucks-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.view-trucks-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.view-trucks-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.view-trucks-heading {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.view-trucks-add-button-container {
+    margin-bottom: 20px;
+}
+
+.view-trucks-add-button {
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-trucks-add-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Table */
+.view-trucks-table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-trucks-table th,
+.view-trucks-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.view-trucks-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.view-trucks-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.view-trucks-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Buttons */
+.view-trucks-edit-button,
+.view-trucks-delete-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-trucks-edit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.view-trucks-delete-button {
+    background-color: #dc3545;
+}
+
+.view-trucks-delete-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Forms */
+.view-trucks-form {
+    display: inline;
+}
+
+/* Edit Truck Page Styling */
+
+/* Header */
+.edit-truck-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.edit-truck-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.edit-truck-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.edit-truck-nav-list li {
+    margin-left: 15px;
+}
+
+.edit-truck-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.edit-truck-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.edit-truck-section {
+    width: 60%;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.edit-truck-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form */
+.edit-truck-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-truck-form-row {
+    margin-bottom: 15px;
+}
+
+.edit-truck-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.edit-truck-input,
+.edit-truck-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.edit-truck-input:focus,
+.edit-truck-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button */
+.edit-truck-submit-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-truck-submit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Add Truck Page Styling */
+
+/* Header */
+.add-truck-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.add-truck-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.add-truck-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.add-truck-nav-list li {
+    margin-left: 15px;
+}
+
+.add-truck-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.add-truck-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.add-truck-info {
+    width: 60%;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.add-truck-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form */
+.add-truck-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button */
+.add-truck-submit-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-truck-submit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* View Drivers Page Styling */
+
+/* Header */
+.view-drivers-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.view-drivers-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.view-drivers-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.view-drivers-nav-list li {
+    margin-left: 15px;
+}
+
+.view-drivers-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.view-drivers-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.view-drivers-section {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.view-drivers-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Applications Button */
+.view-drivers-applications-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.view-drivers-applications-button:hover {
+    background-color: #0056b3;
+}
+
+/* Table */
+.view-drivers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.view-drivers-table-head th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.view-drivers-table-body td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.view-drivers-table-body tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.view-drivers-table-body tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Actions Buttons */
+.view-drivers-edit-button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-drivers-edit-button:hover {
+    background-color: #218838;
+}
+
+.view-drivers-delete-form {
+    display: inline-block;
+}
+
+.view-drivers-delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-drivers-delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Edit Truck Page Styling */
+
+/* Header */
+.edit-truck-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.edit-truck-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.edit-truck-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.edit-truck-nav-list li {
+    margin-left: 15px;
+}
+
+.edit-truck-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.edit-truck-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.edit-truck-section {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-truck-heading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.edit-truck-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-truck-form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-truck-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.edit-truck-input,
+.edit-truck-select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.edit-truck-input:focus,
+.edit-truck-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.edit-truck-submit-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.edit-truck-submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* View Applications Page Styling */
+
+/* Header */
+.view-applications-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.view-applications-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.view-applications-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.view-applications-nav-list li {
+    margin-left: 15px;
+}
+
+.view-applications-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.view-applications-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Content */
+.view-applications-section {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-applications-heading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Table Styling */
+.view-applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-applications-table th,
+.view-applications-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.view-applications-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.view-applications-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.view-applications-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Buttons */
+.view-applications-form {
+    display: inline-block;
+}
+
+.view-applications-approve-button,
+.view-applications-reject-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-applications-reject-button {
+    background-color: #dc3545;
+}
+
+.view-applications-approve-button:hover {
+    background-color: #0056b3;
+}
+
+.view-applications-reject-button:hover {
+    background-color: #c82333;
+}
+
+
+/* View Requests Page Styling */
+
+/* Header */
+.view-requests-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.view-requests-title {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.view-requests-nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.view-requests-nav-list li {
+    margin-left: 15px;
+}
+
+.view-requests-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.view-requests-nav-link:hover {
+    color: #f0c040; /* Gold color on hover */
+}
+
+/* Main Sections */
+.view-requests-section,
+.view-available-trucks-section,
+.view-approved-loads-section {
+    margin: 40px auto;
+    width: 90%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-requests-heading,
+.view-available-trucks-heading,
+.view-approved-loads-heading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Tables Styling */
+.view-requests-table,
+.view-available-trucks-table,
+.view-approved-loads-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-requests-table th,
+.view-available-trucks-table th,
+.view-approved-loads-table th,
+.view-requests-table td,
+.view-available-trucks-table td,
+.view-approved-loads-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.view-requests-table th,
+.view-available-trucks-table th,
+.view-approved-loads-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.view-requests-table tr:nth-child(even),
+.view-available-trucks-table tr:nth-child(even),
+.view-approved-loads-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.view-requests-table tr:hover,
+.view-available-trucks-table tr:hover,
+.view-approved-loads-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Forms and Buttons */
+.view-requests-form,
+.view-approved-loads-form {
+    display: inline-block;
+}
+
+.view-requests-input {
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.view-requests-assign-button,
+.view-requests-deny-button,
+.view-approved-loads-complete-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-requests-deny-button {
+    background-color: #dc3545;
+}
+
+.view-requests-assign-button:hover {
+    background-color: #0056b3;
+}
+
+.view-requests-deny-button:hover {
+    background-color: #c82333;
+}
+
+.view-approved-loads-complete-button:hover {
+    background-color: #0056b3;
+}
+/* Navigation Bar */
+.edit-driver-header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.edit-driver-title {
+    margin: 0;
+    font-size: 24px;
+}
+
+.edit-driver-nav {
+    margin-top: 10px;
+}
+
+.edit-driver-nav-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.edit-driver-nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.edit-driver-nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Section */
+.edit-driver-section {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-driver-heading {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.edit-driver-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-driver-form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.edit-driver-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.edit-driver-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-driver-input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.edit-driver-submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-driver-submit-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Logistics Company</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="home-header-container">
+            <h1 class="home-title">Trucking Logistics Company</h1>
+            <nav>
+                <ul class="home-nav-links">
+                    <li><a href="#" id="login-link" class="home-login-link">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="home-modal">
+        <div class="home-modal-content">
+            <span class="home-close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" method="POST" action="{{ url_for('main.login') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <button type="submit">Login</button>
+            </form>
+            <!-- Error Message -->
+            <div id="error-message" class="home-error-message" style="display: none;">
+                {{ error }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <div class="home-hero-section">
+            <h2>Welcome to Our Logistics Company</h2>
+            <p>We specialize in providing reliable and efficient trucking solutions for all your freight needs.</p>
+        </div>
+
+        <!-- Buttons Section -->
+        <section class="home-action-buttons">
+            <a href="{{ url_for('main.request_load') }}" class="home-button">Request Load</a>
+            <a href="{{ url_for('main.apply') }}" class="home-button">Apply</a>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="home-about-us">
+            <h2>About Us</h2>
+            <p>
+                Welcome to our logistics and trucking company. We specialize in providing 
+                reliable and efficient solutions for all your freight needs. With years of 
+                experience and a dedicated team of professionals, we are committed to ensuring 
+                your satisfaction.
+            </p>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        const loginLink = document.getElementById('login-link');
+        const loginModal = document.getElementById('login-modal');
+        const closeBtn = document.querySelector('.home-close');
+        const errorMessage = document.getElementById('error-message');
+
+        loginLink.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        if (errorMessage && errorMessage.textContent.trim() !== "") {
+            loginModal.style.display = 'flex';
+            errorMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

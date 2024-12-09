@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Truck</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="add-truck-header">
+            <h1 class="add-truck-title">Add New Truck</h1>
+            <nav class="add-truck-nav">
+                <ul class="add-truck-nav-list">
+                    <li><a href="{{ url_for('main.view_trucks') }}" class="add-truck-nav-link">Back to Trucks</a></li>
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="add-truck-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Add Truck Form -->
+    <main>
+        <section class="add-truck-info">
+            <h2 class="add-truck-heading">Add New Truck</h2>
+            <form class="add-truck-form" method="POST" action="{{ url_for('main.add_truck') }}">
+                <div class="form-group">
+                    <label for="make">Make:</label>
+                    <input type="text" id="make" name="make" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vin">VIN:</label>
+                    <input type="text" id="vin" name="vin" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="license_plate">License Plate:</label>
+                    <input type="text" id="license_plate" name="license_plate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registration">Registration:</label>
+                    <input type="text" id="registration" name="registration">
+                </div>
+
+                <div class="form-group">
+                    <label for="physical_insurance">Physical Insurance:</label>
+                    <select id="physical_insurance" name="physical_insurance">
+                        {% for insurance in insurances %}
+                            <option value="{{ insurance['insurance_id'] }}">{{ insurance['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="owner">Owner:</label>
+                    <input type="text" id="owner" name="owner" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenses">Expenses:</label>
+                    <input type="number" id="expenses" name="expenses" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="driver_id">Driver:</label>
+                    <select id="driver_id" name="driver_id">
+                        {% for driver in drivers %}
+                            <option value="{{ driver['driver_id'] }}">{{ driver['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="policy_end_date">Policy End Date:</label>
+                    <input type="date" id="policy_end_date" name="policy_end_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination_state">Destination State:</label>
+                    <input type="text" id="destination_state" name="destination_state">
+                </div>
+
+                <div class="form-group">
+                    <label for="following_dest_state">Following Destination State:</label>
+                    <input type="text" id="following_dest_state" name="following_dest_state">
+                </div>
+
+                <button type="submit" class="add-truck-submit-button">Add Truck</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

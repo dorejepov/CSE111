@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Load</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="request-load-header-container">
+            <h1 class="request-load-title">Request Load</h1>
+            <nav>
+                <ul class="request-load-nav-links">
+                    <li><a href="{{ url_for('main.home') }}" class="request-load-home-link">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Request Load Form -->
+    <main>
+        <section class="request-load-form-section">
+            <h2 class="request-load-heading">Fill out the form to request a load</h2>
+            <form class="request-load-form" method="POST" action="{{ url_for('main.request_load') }}">
+                <div class="request-load-form-group">
+                    <label for="broker">Select Broker:</label>
+                    <select id="broker" name="broker" required>
+                        {% for broker in brokers %}
+                            <option value="{{ broker['broker_id'] }}">{{ broker['company_name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="request-load-form-group">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" required>
+                </div>
+                <div class="request-load-form-group">
+                    <label for="origin">Origin:</label>
+                    <input type="text" id="origin" name="origin" required>
+                </div>
+                <div class="request-load-form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <div class="request-load-form-group">
+                    <label for="load_details">Load Details:</label>
+                    <textarea id="load_details" name="load_details" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="request-load-submit-button">Submit Request</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

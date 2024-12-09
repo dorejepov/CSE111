@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash_style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="dispatcher-dashboard-header">
+            <h1 class="dispatcher-dashboard-title">Dispatcher Dashboard</h1>
+            <nav class="dispatcher-dashboard-nav">
+                <ul class="dispatcher-dashboard-nav-list">
+                    <li><a href="{{ url_for('main.driver_logout') }}" class="dispatcher-dashboard-nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dispatcher Dashboard Main Content -->
+    <main>
+        <div class="dispatcher-dashboard-container">
+            <h2 class="dispatcher-dashboard-welcome">Welcome to the Dispatcher Dashboard</h2>
+
+            <!-- Action Buttons -->
+            <section class="dispatcher-dashboard-buttons">
+                <a href="{{ url_for('main.view_trucks') }}" class="dispatcher-dashboard-button">View Trucks</a>
+                <a href="{{ url_for('main.view_drivers') }}" class="dispatcher-dashboard-button">View Drivers</a>
+                <a href="{{ url_for('main.view_requests') }}" class="dispatcher-dashboard-button">View Requests</a>
+                <a href="{{ url_for('main.dispatcher_account') }}" class="dispatcher-dashboard-button">Dispatcher Account</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Additional JavaScript if needed for modal or any interaction
+    </script>
+</body>
+</html>
