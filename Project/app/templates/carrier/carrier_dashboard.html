@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrier Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carrier_dashboard.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="header-container">
+            <h1>Welcome, {{ carrier['carrier_name'] }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('main.carrier_logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Trucks Table -->
+    <main>
+        <section>
+            <h2>Your Trucks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>License Plate</th>
+                        <th>VIN</th>
+                        <th>Expenses</th>
+                        <th>Policy End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for truck in trucks %}
+                    <tr>
+                        <td>{{ truck['truck_id'] }}</td>
+                        <td>{{ truck['make'] }}</td>
+                        <td>{{ truck['model'] }}</td>
+                        <td>{{ truck['license_plate'] }}</td>
+                        <td>{{ truck['vin'] }}</td>
+                        <td>${{ "%.2f"|format(truck['expenses']) }}</td>
+                        <td>{{ truck['policy_end_date'] }}</td>
+                        <td>
+                            <a href="{{ url_for('main.edit_truck', truck_id=truck['truck_id']) }}">Edit</a> |
+                            <form method="POST" action="{{ url_for('main.delete_truck', truck_id=truck['truck_id']) }}" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

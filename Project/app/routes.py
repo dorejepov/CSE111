@@ -42,9 +42,20 @@ def login():
         session['dispatcher_id'] = dispatcher['dispatcher_id']
         return redirect(url_for('main.dispatcher_dashboard'))
 
+    # Check if user exists in CarrierPasswords table
+    carrier = cursor.execute("""
+        SELECT * FROM CarrierPasswords
+        WHERE username = ? AND password = ?
+    """, (username, password)).fetchone()
+
+    if carrier:
+        session['carrier_id'] = carrier['carrier_id']
+        return redirect(url_for('main.carrier_dashboard'))
+
     # If neither, show error message
     error_message = "Invalid username or password"
     return render_template('index.html', error=error_message)
+
 
 @main_bp.route('/driver/account', methods=['GET', 'POST'])
 def driver_account():
@@ -617,3 +628,82 @@ def complete_load(request_id):
 
     return redirect(url_for('main.view_requests'))
 
+@main_bp.route('/carrier/dashboard')
+def carrier_dashboard():
+    if 'carrier_id' not in session:
+        return redirect(url_for('main.home'))
+
+    cursor = get_cursor()
+    carrier = cursor.execute("""
+        SELECT * FROM Carriers WHERE carrier_id = ?
+    """, (session['carrier_id'],)).fetchone()
+
+    if not carrier:
+        return redirect(url_for('main.home'))
+
+    # Fetch trucks owned by the carrier
+    trucks = cursor.execute("""
+        SELECT truck_id, make, model, license_plate, vin, expenses, policy_end_date
+        FROM Trucks
+        WHERE owner = ?
+    """, (carrier['carrier_name'],)).fetchall()
+
+    return render_template('carrier/carrier_dashboard.html', carrier=carrier, trucks=trucks)
+
+
+
+
+
+@main_bp.route('/carrier/logout')
+def carrier_logout():
+    session.pop('carrier_id', None)  # Remove carrier_id from session
+    return redirect(url_for('main.home'))
+
+
+@main_bp.route('/carrier/trucks/edit/<int:truck_id>', methods=['GET', 'POST'])
+def edit_truck_carrier(truck_id):
+    if 'carrier_id' not in session:
+        return redirect(url_for('main.home'))
+
+    cursor = get_cursor()
+    if request.method == 'POST':
+        # Fetch form data
+        make = request.form.get('make')
+        model = request.form.get('model')
+        license_plate = request.form.get('license_plate')
+        vin = request.form.get('vin')
+        expenses = request.form.get('expenses')
+        policy_end_date = request.form.get('policy_end_date')
+
+        # Update the truck in the database
+        cursor.execute("""
+            UPDATE Trucks
+            SET make = ?, model = ?, license_plate = ?, vin = ?, expenses = ?, policy_end_date = ?
+            WHERE truck_id = ?
+        """, (make, model, license_plate, vin, expenses, policy_end_date, truck_id))
+        get_db().commit()
+
+        return redirect(url_for('main.carrier_dashboard'))
+
+    # Fetch truck data for the form
+    truck = cursor.execute("""
+        SELECT * FROM Trucks WHERE truck_id = ?
+    """, (truck_id,)).fetchone()
+
+    return render_template('carrier/edit_truck.html', truck=truck)
+
+
+@main_bp.route('/carrier/trucks/delete/<int:truck_id>', methods=['POST'])
+def delete_truck_carrier(truck_id):
+    if 'carrier_id' not in session:
+        return redirect(url_for('main.home'))
+
+    cursor = get_cursor()
+
+    # Delete the truck
+    cursor.execute("""
+        DELETE FROM Trucks WHERE truck_id = ?
+    """, (truck_id,))
+    get_db().commit()
+
+    return redirect(url_for('main.carrier_dashboard'))

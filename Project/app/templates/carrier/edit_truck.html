@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Truck</title>
+</head>
+<body>
+    <h1>Edit Truck Information</h1>
+    <form method="POST" action="">
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" value="{{ truck['make'] }}" required>
+        <br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" value="{{ truck['model'] }}" required>
+        <br>
+
+        <label for="license_plate">License Plate:</label>
+        <input type="text" id="license_plate" name="license_plate" value="{{ truck['license_plate'] }}" required>
+        <br>
+
+        <label for="vin">VIN:</label>
+        <input type="text" id="vin" name="vin" value="{{ truck['vin'] }}" required>
+        <br>
+
+        <label for="expenses">Expenses:</label>
+        <input type="number" id="expenses" name="expenses" value="{{ truck['expenses'] }}" step="0.01" required>
+        <br>
+
+        <label for="policy_end_date">Policy End Date:</label>
+        <input type="date" id="policy_end_date" name="policy_end_date" value="{{ truck['policy_end_date'] }}" required>
+        <br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
